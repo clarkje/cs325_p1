@@ -11,7 +11,7 @@ import random
 random.seed(None)
 
 # Just an example algorithm implementation
-# Takes a List of inputData
+# Takes a List of inputData, returns an output string
 def exampleAlg(inputData):
     output = "Example Algorithm: "
     for d in inputData:
@@ -54,7 +54,7 @@ def doPerfTest(function, iterations, size, inFile = None, outFile = None):
         print(td)
 
 # genInputData
-# Returns a list of random integer
+# Returns a list of random integers
 # size - number of integers to return
 # min (default = 0) - minimum random integer
 # max (default = 99) - maximum random integer
@@ -69,9 +69,3 @@ def genInputData(size, min = 0, max = 99):
 # Executes exampleAlg 10 times, using 10 digits of input data
 
 doPerfTest(exampleAlg, 10, 10)
-
-# def generateInputData(size):
-
-
-# n = int(sys.argv[1])
-# doPerfTest(n)
