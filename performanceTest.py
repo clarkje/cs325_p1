@@ -27,7 +27,7 @@ def exampleAlg(inputData):
 # inFile (optional) = input file to use (size is ignored)
 # outFile (optional) = file to output results to
 
-def doPerfTest(function, iterations, size, inFile = None, outFile = None):
+def doPerfTest(function, iterations, size):
     timerData = []                # Stores results in milliseconds
     outputData = []
 
