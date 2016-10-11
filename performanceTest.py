@@ -30,14 +30,17 @@ def exampleAlg(inputData):
 def doPerfTest(function, iterations, size, inFile = None, outFile = None):
     timerData = []                # Stores results in milliseconds
     outputData = []
-    for i in range (0, iterations):
-        start_time = time.clock()   # time.clock() is more accurate than time.time()
 
-        # Calls the algorithm to be timed
+    for i in range (0, iterations):
+
         inputData = genInputData(size)
+
+        start_time = time.clock()   # time.clock() is more accurate than time.time()
+        # Calls the algorithm to be timed
         out = function(inputData)
-        outputData.append(out)
         end_time = time.clock()
+
+        outputData.append(out)
         timerData.append(end_time - start_time)
 
     print("Results for function {}:").format(function.func_name)
