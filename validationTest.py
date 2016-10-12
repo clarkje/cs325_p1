@@ -2,8 +2,8 @@
 # CS325 - Project 1
 # Maximum Sum Subarray Experimental Analysis
 from __future__ import print_function
-
 import sys
+from DivideAndConquer import maxSubArray
 
 # Result object populated and returned by algorithm
 class Result:
@@ -24,13 +24,11 @@ class Result:
 
 # Just an example algorithm implementation
 # Takes a List of inputData, returns an output string
-def exampleAlg(inputData):
-
+def divideAndConquer(inputData):
     res = Result()
-    for d in inputData:
-        res.data.append(d)
-    res.result = 42
-
+    info = maxSubArray(inputData, 0, len(inputData) - 1)
+    res.result = info[0]
+    res.data = inputData[info[1]:info[2]+1]
     return res
 
 # doValidationTest
@@ -74,4 +72,4 @@ def doValidationTest(function, inFile, outFile):
 # Example Call
 # Executes exampleAlg 10 times, using 10 digits of input data
 print("Peforming Validation Test")
-doValidationTest(exampleAlg, "./testData/MSS_TestProblems.txt", "./outfile.txt")
+doValidationTest(divideAndConquer, "./testData/MSS_TestProblems.txt", "./outfile.txt")
