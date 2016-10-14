@@ -4,6 +4,9 @@
 from __future__ import print_function
 import sys
 from maxSumSubarray import maxSubArray
+from maxSumSubarray import iteration
+from maxSumSubarray import enumeration
+#from maxSumSubarray import dynamic_programming
 
 
 # Result object populated and returned by algorithm
@@ -25,9 +28,23 @@ class Result:
 
 # Just an example algorithm implementation
 # Takes a List of inputData, returns an output string
-def divideAndConquer(inputData):
+def divideAndConquerStart(inputData):
     res = Result()
     info = maxSubArray(inputData, 0, len(inputData) - 1)
+    res.result = info[0]
+    res.data = inputData[info[1]:info[2]+1]
+    return res
+
+def iterationStart(inputData):
+    res = Result()
+    info = iteration(inputData)
+    res.result = info[0]
+    res.data = inputData[info[1]:info[2]+1]
+    return res
+
+def enumerationStart(inputData):
+    res = Result()
+    info = enumeration(inputData)
     res.result = info[0]
     res.data = inputData[info[1]:info[2]+1]
     return res
@@ -44,7 +61,9 @@ def divideAndConquer(inputData):
 
 def doValidationTest(function, inFile, outFile):
 
-    outFile = open(outFile, 'w+')
+    outFile = open(outFile, 'a+')   #allows for appending
+
+    print(function.func_name, ": ", file=outFile) #adds the function name to the output file (which is the helper function, not the original)
 
     with open(inFile, 'r') as inFile:
         for line in inFile:
@@ -73,4 +92,7 @@ def doValidationTest(function, inFile, outFile):
 # Example Call
 # Executes exampleAlg 10 times, using 10 digits of input data
 print("Peforming Validation Test")
-doValidationTest(divideAndConquer, "./testData/MSS_TestProblems.txt", "./outfile.txt")
+doValidationTest(iterationStart, "./testData/MSS_TestProblems.txt", "./outfile.txt")
+doValidationTest(enumerationStart, "./testData/MSS_TestProblems.txt", "./outfile.txt")
+doValidationTest(divideAndConquerStart, "./testData/MSS_TestProblems.txt", "./outfile.txt")
+#doValidationTest(dynamic_programming, "./testData/MSS_TestProblems.txt", "./outfile.txt")
