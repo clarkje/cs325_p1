@@ -1,0 +1,27 @@
+**************************************************************************
+			RUNNING THE PROGRAM 
+**************************************************************************
+   On your command line, type the following line:
+
+		python validationTest.py
+
+   Then press the 'enter' key.
+
+************************************************************************** 
+			INTERPRETING THE RESULTS 
+**************************************************************************
+   The results from MSS_Problems.txt will be found in the main directory, 
+   in file aptly labeled:
+			MSS_Results.txt
+
+   Within this file, you will find 4 sections demarcated by the titles:
+	* iterationStart
+	* enumerationStart
+	* divideandconquerStart
+	* dynamicProgrammingStart
+
+  Underneath each of the titles lies a series of corresponding results with 
+  the following format:
+     The first line is the full array from 'MSS_Problems.txt'. 
+     The second line is the maximum subarray of the above array.
+     The third line is the sum of the maximum subarray.
