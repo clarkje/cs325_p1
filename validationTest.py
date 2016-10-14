@@ -6,8 +6,7 @@ import sys
 from maxSumSubarray import maxSubArray
 from maxSumSubarray import iteration
 from maxSumSubarray import enumeration
-#from maxSumSubarray import dynamic_programming
-
+from maxSumSubarray import dynamicProgramming
 
 # Result object populated and returned by algorithm
 class Result:
@@ -28,6 +27,13 @@ class Result:
 
 # Just an example algorithm implementation
 # Takes a List of inputData, returns an output string
+def dynamicProgrammingStart(inputData):
+    res = Result()
+    info = iteration(inputData)
+    res.result = info[0]
+    res.data = inputData[info[1]:info[2]+1]
+    return res
+
 def divideAndConquerStart(inputData):
     res = Result()
     info = maxSubArray(inputData, 0, len(inputData) - 1)
@@ -92,7 +98,7 @@ def doValidationTest(function, inFile, outFile):
 # Example Call
 # Executes exampleAlg 10 times, using 10 digits of input data
 print("Peforming Validation Test")
-doValidationTest(iterationStart, "./testData/MSS_TestProblems.txt", "./outfile.txt")
-doValidationTest(enumerationStart, "./testData/MSS_TestProblems.txt", "./outfile.txt")
-doValidationTest(divideAndConquerStart, "./testData/MSS_TestProblems.txt", "./outfile.txt")
-#doValidationTest(dynamic_programming, "./testData/MSS_TestProblems.txt", "./outfile.txt")
+doValidationTest(iterationStart, "./testData/MSS_Problems.txt", "./MSS_Results.txt")
+doValidationTest(enumerationStart, "./testData/MSS_Problems.txt", "./MSS_Results.txt")
+doValidationTest(divideAndConquerStart, "./testData/MSS_Problems.txt", "./MSS_Results.txt")
+doValidationTest(dynamicProgrammingStart, "./testData/MSS_Problems.txt", "./MSS_Results.txt")
