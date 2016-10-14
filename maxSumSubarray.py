@@ -128,44 +128,39 @@ def maxSubArray(array, start, end):
 # Maximum Sum Subarray -- Dynamic programming (a.k.a., recursion-inversion )
 # Running time: O(n)
 #*******************************************************************************
-#def dynamic_programming(a):
-"""
-    n = a.length()
-    max_sum = -inf
-    ending_here_sum = -inf
-
-    for j = 1 to n:
+def dynamicProgramming(a):
+    n = len(a)
+    maxSum = -float('inf')
+    subarraySum = -float('inf')
+    ending_here_sum = -float('inf')
+    for j in range (1,n):
         # since the high of any subarray ending @ index j must be j,
         # every iteration automatically sets ending-here-high to j.
-        ending_here_high = j
-
+        endIndex = j
         # Check whether the maxsubarray ending at index j only contains a[j].
             # As we enter an iteration of the loop, ending_here_sum has the sum
             #  of the values in a max subarray ending at j-1. 
             # If ending_here_sum + a[j] > a[j], we extend the max subarray ending
             #  at index j-1 to include index j. The test in the if statement 
             #  just subtracts out a[j] from both sides. 
-        if (ending_here_sum > 0):
-            ending_here_sum = ending_here_sum + a[j]
-
+        if (subarraySum > 0):
+            subarraySum = subarraySum + a[j]
         # Otherwise, if maxsubarray ending at index j contains more than just a[j],
         #  we start a new subarray at index j, so both its low and high ends have
         #  the value j (note: ending_here_high = j, above.) and its sum is a[j].
         else:
-            ending_here_low = j
-            ending_here_sum = a[j]
-
+            startIndex = j
+            subarraySum = a[j]
         # Once we know the max subarray ending at index j, we test to see whether
         #  it has a greater sum than the max subarray found so far, ending at any
         #  position less than or equal to j. 
         # If the sum is greater, we update low, high and max_sum appropriately. 
-        if (ending_here_sum > max_sum):
-            max_sum = ending_here_sum    # sum of vals found in max subarray so far
-            low = ending_here_low        # low of the max subarray found so far
-            high = ending_here_high      # high of the max subarray found so far
+        if (subarraySum > maxSum):
+            maxSum = subarraySum    # sum of vals found in max subarray so far
+            subarrayStart = startIndex        # low of the max subarray found so far
+            subarrayEnd = endIndex      # high of the max subarray found so far
 
-    return (maxSum, startIndex, endIndex)
-"""
+    return (maxSum, subarrayStart, subarrayEnd)
 
 
 #*******************************************************************************
@@ -177,6 +172,7 @@ def main():
 
     iterResult = iteration(arr)
     enumResult = enumeration(arr)
+    dpResult = dynamicProgramming(arr)
     iterList = []
     enumList = []
 
@@ -201,6 +197,18 @@ def main():
         if (i == enumResult[1]):
             print '[', arr[i], ', ',
         elif (i == enumResult[2]):
+            print arr[i], ']\n'
+        else:
+            print arr[i], ', ',
+
+    print '********** DP Results **********'
+    print 'max sum: ', dpResult[0]
+
+    print 'corresponding array: ',
+    for i in range (dpResult[1], dpResult[2] + 1):
+        if (i == dpResult[1]):
+            print '[', arr[i], ', ',
+        elif (i == dpResult[2]):
             print arr[i], ']\n'
         else:
             print arr[i], ', ',
