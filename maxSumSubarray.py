@@ -1,10 +1,12 @@
+import math
+
 #*******************************************************************************
 # AUTHOR:  Caleigh Runge-Hottman
 #          (with pseudocode provided from Professor Glencora Borradaile, OSU)
 # DATE:  10 October 2016
-# DESCRIPTION: 
-#  Given an aray of small integers, this program computes the maximum total sum 
-#  of a consecutive sequence of numbers (i.e., a subarray) using 4 different 
+# DESCRIPTION:
+#  Given an aray of small integers, this program computes the maximum total sum
+#  of a consecutive sequence of numbers (i.e., a subarray) using 4 different
 #  algorithms:  enumeration, iteration, divide & conquer, dynamic programming
 #  e.g. MaxSubarray([31, -41, 59, 26, -53, 58, 97, -93, -23, 84]) = 187
 #       (where the subarray is [59, 26, -53, 58, 97]).
@@ -12,7 +14,7 @@
 
 #*******************************************************************************
 # Maximum Sum Subarray -- Enumerative Algorithm
-# ANALYSIS: O(n^3). (O(n^2) pairs * O(n) compute each sum) 
+# ANALYSIS: O(n^3). (O(n^2) pairs * O(n) compute each sum)
 # (Depends cubically on the size of the input)
 #*******************************************************************************
 def enumeration(A):
@@ -70,7 +72,7 @@ def iteration(A):
 
 #*******************************************************************************
 # Maximum Sum Subarray -- Divide and Conquer
-# ANALYSIS: O(n log n). (O(n) per level * O(log n) depth) 
+# ANALYSIS: O(n log n). (O(n) per level * O(log n) depth)
 #*******************************************************************************
 # Author: Andrew Kittrell
 # CS325 Project 1
@@ -128,44 +130,42 @@ def maxSubArray(array, start, end):
 # Maximum Sum Subarray -- Dynamic programming (a.k.a., recursion-inversion )
 # Running time: O(n)
 #*******************************************************************************
-#def dynamic_programming(a):
-"""
-    n = a.length()
-    max_sum = -inf
-    ending_here_sum = -inf
+def dynamicMaxSumSubarray(a):
+    n = len(a)
+    maxSum = float("-inf")
+    endingHereSum = float("-inf")
 
-    for j = 1 to n:
+    for j in range(0,n):
         # since the high of any subarray ending @ index j must be j,
         # every iteration automatically sets ending-here-high to j.
-        ending_here_high = j
+        endingHereHigh = j
 
         # Check whether the maxsubarray ending at index j only contains a[j].
-            # As we enter an iteration of the loop, ending_here_sum has the sum
-            #  of the values in a max subarray ending at j-1. 
-            # If ending_here_sum + a[j] > a[j], we extend the max subarray ending
-            #  at index j-1 to include index j. The test in the if statement 
-            #  just subtracts out a[j] from both sides. 
-        if (ending_here_sum > 0):
-            ending_here_sum = ending_here_sum + a[j]
+        # As we enter an iteration of the loop, ending_here_sum has the sum
+        #  of the values in a max subarray ending at j-1.
+        # If ending_here_sum + a[j] > a[j], we extend the max subarray ending
+        #  at index j-1 to include index j. The test in the if statement
+        #  just subtracts out a[j] from both sides.
+        if (endingHereSum > 0):
+            endingHereSum = endingHereSum + a[j]
 
         # Otherwise, if maxsubarray ending at index j contains more than just a[j],
         #  we start a new subarray at index j, so both its low and high ends have
         #  the value j (note: ending_here_high = j, above.) and its sum is a[j].
         else:
-            ending_here_low = j
-            ending_here_sum = a[j]
+            endingHereLow = j
+            endingHereSum = a[j]
 
         # Once we know the max subarray ending at index j, we test to see whether
-        #  it has a greater sum than the max subarray found so far, ending at any
-        #  position less than or equal to j. 
-        # If the sum is greater, we update low, high and max_sum appropriately. 
-        if (ending_here_sum > max_sum):
-            max_sum = ending_here_sum    # sum of vals found in max subarray so far
-            low = ending_here_low        # low of the max subarray found so far
-            high = ending_here_high      # high of the max subarray found so far
+        # it has a greater sum than the max subarray found so far, ending at any
+        # position less than or equal to j.
+        # If the sum is greater, we update low, high and max_sum appropriately.
+        if (endingHereSum > maxSum):
+            maxSum = endingHereSum    # sum of vals found in max subarray so far
+            subarrayStart = endingHereLow        # low of the max subarray found so far
+            subarrayEnd = endingHereHigh      # high of the max subarray found so far
 
-    return (maxSum, startIndex, endIndex)
-"""
+    return (maxSum, subarrayStart, subarrayEnd)
 
 
 #*******************************************************************************
