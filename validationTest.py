@@ -3,7 +3,8 @@
 # Maximum Sum Subarray Experimental Analysis
 from __future__ import print_function
 import sys
-from DivideAndConquer import maxSubArray
+from maxSumSubarray import maxSubArray
+
 
 # Result object populated and returned by algorithm
 class Result:
