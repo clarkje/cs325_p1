@@ -1,6 +1,7 @@
 # CS325_400_F2016
 # Jeromie Clark
 # Project 2
+# Adapted from HW4 group code 
 
 # minCoins
 # Implements a dynamic programming algorithm that returns the minimum number
