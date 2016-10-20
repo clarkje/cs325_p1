@@ -1,7 +1,7 @@
 # CS325_400_F2016
 # Jeromie Clark
 # Project 2
-# Adapted from HW4 group code 
+# Adapted from HW4 group code
 
 # minCoins
 # Implements a dynamic programming algorithm that returns the minimum number
@@ -16,12 +16,6 @@ def minCoins(coinArray, amount):
  # The worst-case scenario is that we return all pennies
  # Build an array big enough to hold pennies for the whole amount
  candidateArr = [0] * (amount + 1)
-
- # Check the last possible position in the array
- # If it's non-zero, we're done
- # I think this is equivalent to amount == 0
- #if candidateArr[amount] != 0:
- #    return finalArr[amount]
 
  # build the amount out with pennies
  # then consolidate pennies to nickels to dimes to quarters until we can't
