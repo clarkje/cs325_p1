@@ -13,23 +13,9 @@ import sys
 
 def changedp(coinArray, amount, minCoinArray, usedCoinArray):
 
-    # Base Case
-    if (amount == 0):
-        return 0
-
-
-
     # Compute the minimum coins required for all values from 1 to amount
-    for value in range(amount + 1):
+    for value in range(1, amount + 1):
 
-        # Populate special cases to get things started
-        #if (value == 0):
-        #    minCoinArray[0] = 0;
-        #elif (value == 1):
-        #    minCoinArray[1] = 1;
-        #else:
-        # Consider all coins smaller than value
-        usedCoin = 1
         for coin in coinArray:
             # If the coin is less than or equal to the value of the element we're considering
             if (coin <= value):
@@ -48,7 +34,7 @@ def changedp(coinArray, amount, minCoinArray, usedCoinArray):
 
     # Once we've computed the minimum coins required, we can just get the
     # value from the last element
-    return minCoinArray
+    return minCoinArray[amount]
 
 
 
@@ -80,13 +66,15 @@ def main():
                 # Create an array, which stores the minimum number of coins for
                 # each possible value from 1 ... amount
                 minCoinArray = [float("inf")] * (change + 1)
+                minCoinArray[0] = 0
+                minCoinArray[1] = 1
 
                 # Technically, the first element should be 0, but since we evaluate the base case
                 # first, we'll never consider it anyway...
                 # Ugh, didn't realize we needed to keep track of the coins that we use
                 usedCoinArray = [0] * (change + 1)
 
-                changedp(coinArray, change, minCoinArray, usedCoinArray)
+                amount = changedp(coinArray, change, minCoinArray, usedCoinArray)
 
                 # walk backwards through the used coins to figure out what we used
                 usedCoins = [0] * len(coinArray)
