@@ -28,16 +28,12 @@ def changedp(coinArray, amount, minCoinArray, usedCoinArray):
                 # the number of coins is less than the number of smaller coins
                 # used to compute the value, then we'll take it
                 if (minCoins != float("inf") and minCoins < minCoinArray[value]):
-                    usedCoin = coin
                     minCoinArray[value] = minCoins
                 usedCoinArray[value] = coin;
 
     # Once we've computed the minimum coins required, we can just get the
     # value from the last element
     return minCoinArray[amount]
-
-
-
 
 
 # Main
@@ -62,12 +58,12 @@ def main():
 
             else:
                 change = int(line)
+                oldChange = change
 
                 # Create an array, which stores the minimum number of coins for
                 # each possible value from 1 ... amount
                 minCoinArray = [float("inf")] * (change + 1)
                 minCoinArray[0] = 0
-                minCoinArray[1] = 1
 
                 # Technically, the first element should be 0, but since we evaluate the base case
                 # first, we'll never consider it anyway...
@@ -85,7 +81,7 @@ def main():
                     i += 1
 
                 print(usedCoins, file=outFile)
-                print(minCoinArray[change], file=outFile)
+                print(minCoinArray[oldChange], file=outFile)
 
 
 if __name__ == "__main__":
