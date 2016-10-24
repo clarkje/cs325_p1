@@ -1,0 +1,53 @@
+**************************************************************************
+			  INCLUDED FILES
+**************************************************************************
+	changegreedy.py
+	changedp.py
+	slowchange.py
+
+**************************************************************************
+			RUNNING THE PROGRAM 
+**************************************************************************
+   On your command line, type the following line:
+
+		python [algoname.py] [Coin info file name]
+
+   Where [algoname.py] should be replaced with one of the above files
+   listed under the 'INCLUDED FILES' header, and where [Coin info file name]
+   should be replaced with the coin info file's name. 
+   (Just the name! no '.txt'!)
+
+   NOTE: Again, PLEASE do not append the coin info file name with '.txt'! 
+   Our program does that for you!
+
+   You will need to run this command for each algorithm, and then immediately
+   view the results file.
+
+   For example, if we used the Coin1.txt file, you would use the following 
+   three commands: 
+
+		python changedp.py Coin1
+			*you should be reading the results file now!*
+		python slowchange.py Coin1
+			*you should be reading the results file now!*
+		python changegreedy.py Coin1
+			*you should be reading the results file now!*
+
+************************************************************************** 
+			INTERPRETING THE RESULTS 
+**************************************************************************
+   The results from [Coin info file name].txt will be found in the main 
+   directory, in file labeled:
+			[Coin info file name]change.txt
+
+   As mentioned above, you will need to check this file after each command,
+   as each command will overwrite the aforementioned file. 
+
+   If you see results in the following format:
+	Algorithm: Greedy
+	[2,0,5]
+	7
+
+   That means: using the greedy algorithm to compute the results, there 
+   were 2 coins of the first denomination, 0 coins of the second denomination, 
+   and 5 coins of the final denomination, resulting in a total of 7 coins. 
