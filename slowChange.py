@@ -50,7 +50,7 @@ def main():
     inFile = filename + ".txt"
     outFile = filename + "change.txt"
 
-    outFile = open(outFile,'a')
+    outFile = open(outFile,'w')
     print("Algorithm: Divide and Conquer", file=outFile)
 
     with open(inFile, 'r') as inFile:
