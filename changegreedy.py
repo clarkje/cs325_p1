@@ -21,7 +21,7 @@ def changegreedy(V, A):
 
     # reverse the order of coins per requirements 
     C.reverse() 
-    return (C, m)
+    return (C)
 
 
 # Main
