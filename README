@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 **************************************************************************
 			  INCLUDED FILES
 **************************************************************************
@@ -51,3 +52,9 @@
    That means: using the greedy algorithm to compute the results, there 
    were 2 coins of the first denomination, 0 coins of the second denomination, 
    and 5 coins of the final denomination, resulting in a total of 7 coins. 
+=======
+To Execute:
+python changegreedy.py Amount
+python changeslow.py Amount   (This one may not be practical to actually run)
+python changedp.py Amount
+>>>>>>> Stashed changes
